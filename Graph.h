@@ -49,7 +49,7 @@ struct EdgeList{
                     tail = prev;        // removing the tail
                     prev->next = nullptr;
                 }else{
-                    prev = cur->next;
+                    prev->next = cur->next;
                 }
                 cur->next = nullptr;
                 delete cur;

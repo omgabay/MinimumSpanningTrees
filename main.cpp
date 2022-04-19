@@ -8,13 +8,15 @@ unsigned int Vertex::vertex_number = 0;
 int main(int argc, char *argv[]) {
 
     Graph &g = Graph::MakeEmptyGraph(4);
+    bool logging = true;
     g.AddEdge(1,2,10);
     g.AddEdge(2,3,7);
     g.AddEdge(3,4,5);
     g.AddEdge(4,2,-2);
     g.AddEdge(3,1,-1);
     g.printMe();
-    Kruskal(g,true);
+    Kruskal(g,logging);
+
 
 
     // Reading input-file and running Kruskal
@@ -50,7 +52,9 @@ int main(int argc, char *argv[]) {
             ss = stringstream(line);
             int u,v;
             ss >> u >> v;
-            cout << "Removing the edge (" << u << "," << v << ")" << std::endl;
+            if(logging){
+                cout << "Removing the edge (" << u << "," << v << ")" << std::endl;
+            }
             g2->RemoveEdge(u,v);
             edgesRemoved++;
         }
